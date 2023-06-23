@@ -11,7 +11,7 @@ import ProfileGithub from './ProfileGithub';
 import { getProfileById } from '../../actions/profile';
 
 const Profile = ({ getProfileById, profile: { profile }, auth }) => {
-  const { id } = useParams();
+  const { id } = useParams();//it is a hook which is used to get the id.
   useEffect(() => {
     getProfileById(id);
   }, [getProfileById, id]);
@@ -25,6 +25,7 @@ const Profile = ({ getProfileById, profile: { profile }, auth }) => {
           <Link to="/profiles" className="btn btn-light">
             Back To Profiles
           </Link>
+          //checks for authentication and if it is true then allow the user to edit the profile else it allows only to view the profile
           {auth.isAuthenticated &&
             auth.loading === false &&
             auth.user._id === profile.user._id && (
